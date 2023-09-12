@@ -1,0 +1,19 @@
+{
+  "name": "backend-task-2",
+  "version": "1.0.0",
+  "description": "HNGx second backend task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayothegod/backend-task.git"
+  },
+  "author": "Ayomide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayothegod/backend-task/issues"
+  },
+  "homepage": "https://github.com/Ayothegod/backend-task#readme"
+}
