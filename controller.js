@@ -1,34 +1,43 @@
-const { z } = require("zod")
 const prisma = require("./lib/prisma.js")
-const Joi = require('joi');
+const { validate } = require("./lib/validation.js")
 
 const createPerson = async (req,res) => {
     try {
             const name = req.body.name
+            if(!name) return res.status(400).json("please provide a name")
+            const {error, value } = validate(name)
 
-            // const checkName = await prisma.person.findUnique({
-            //     where:{
-            //         name: name
-            //     }
-            // })
-            // if(checkName){
-            //     res.json("name already exist, try another name")
-            // } 
-            // const user = await prisma.person.create({
-            //     data:{
-            //         name: name
-            //     }
-            // })
-            // res.status(200).json({
-            //     msg: `person with name: ${user.name} has been created successfully`,
-            //     userDetails:{
-            //         id: user.id,
-            //         name: user.name
-            //     }
-            // })
+            if(error){
+                return res.status(400).json("name attribute must be a string")
+            }
+
+            const checkName = await prisma.person.findUnique({
+                where:{
+                    name: value
+                }
+            })
+
+            if(checkName){
+                res.status(200).json({msg:`Person with name: '${value}' already exist, try another name.`})
+            } 
+
+            const user = await prisma.person.create({
+                data:{
+                    name: value
+                }
+            })
+
+            res.status(201).json({
+                msg: `Person with name: '${user.name}' has been created successfully`,
+                userDetails:{
+                    id: user.id,
+                    name: user.name
+                }
+            })
       
     } catch (error) {
-        res.status(404).json("Network error! try again.")
+        console.log(error);
+        res.status(404).json("Something went wrong, try again later.")
     }
 }
 
