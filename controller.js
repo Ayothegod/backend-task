@@ -18,7 +18,7 @@ const createPerson = async (req,res) => {
             })
 
             if(checkName){
-                res.status(200).json({msg:`Person with name: '${value}' already exist, try another name.`})
+                return res.status(200).json({msg:`Person with name: '${value}' already exist, try another name.`})
             } 
 
             const user = await prisma.person.create({
@@ -29,7 +29,7 @@ const createPerson = async (req,res) => {
 
             res.status(201).json({
                 msg: `Person with name: '${user.name}' has been created successfully`,
-                userDetails:{
+                personDetails:{
                     id: user.id,
                     name: user.name
                 }
@@ -44,16 +44,34 @@ const createPerson = async (req,res) => {
 const getPerson = async (req,res) => {
     try {
         if(req.body.name){
-            const name = req.body.name
-            res.status(200).json(name)
-        } else if (req.body.user_id) {
-            const user_id = req.body.user_id
-            res.status(200).json(user_id)
-        } else {
-            res.status(400).json("only name and user_id acceptable")
+            const user = await prisma.person.findUnique({
+                where:{
+                    name: req.body.name
+                }
+            })
+            return res.status(201).json({
+                msg: `Person with name: '${user.name}' has been returned successfully`,
+                personDetails:{
+                    id: user.id,
+                    name: user.name
+                }
+            })
         }
+
+        const user = await prisma.person.findUnique({
+            where:{
+                id: req.params.user_id
+            }
+        })
+        res.status(201).json({
+            msg: `Person with id: '${user.id}' has been returned successfully`,
+            personDetails:{
+                id: user.id,
+                name: user.name
+            }
+        })
     } catch (error) {
-        res.status(404).json("Network error! try again.")
+        res.status(500).json("Network error! try again.")
     }
 }
 const updatePerson = async (req,res) => {

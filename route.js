@@ -3,7 +3,7 @@ const router = express.Router()
 
 const {createPerson, getPerson, updatePerson, deletePerson} = require("./controller.js")
 
-router.get("/", getPerson
+router.get("/:user_id", getPerson
 )
 router.post("/", createPerson)
 
