@@ -7,8 +7,8 @@ router.get("/:user_id", getPerson
 )
 router.post("/", createPerson)
 
-router.patch("/", updatePerson)
+router.patch("/:user_id", updatePerson)
 
-router.delete("/", deletePerson)
+router.delete("/:user_id", deletePerson)
 
 module.exports = router
