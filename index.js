@@ -3,8 +3,11 @@ const app = express()
 require("dotenv").config()
 const port = process.env.PORT || 3001
 
-app.get("/", (req, res) => {
-    res.status(200).json({msg: "get request "})
-})
+const personRouter = require("./route.js")
 
-app.listen(port, () => console.log(`server is running on port`))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+app.use("/api", personRouter)
+
+app.listen(port, () => console.log(`server is running on port: ${port}`))
