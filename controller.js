@@ -1,6 +1,7 @@
 const prisma = require("./lib/prisma.js");
 const { validate } = require("./lib/validation.js");
 
+// create person record function
 const createPerson = async (req, res) => {
   try {
     const name = req.body.name;
@@ -42,6 +43,7 @@ const createPerson = async (req, res) => {
   }
 };
 
+// get person record function
 const getPerson = async (req, res) => {
   try {
     if (req.body.name) {
@@ -76,6 +78,7 @@ const getPerson = async (req, res) => {
   }
 };
 
+// update person record function
 const updatePerson = async (req, res) => {
   try {
     const id = req.params.user_id;
@@ -125,6 +128,7 @@ const updatePerson = async (req, res) => {
   }
 };
 
+// delete person record function
 const deletePerson = async (req, res) => {
   try {
     const id = req.params.user_id;
