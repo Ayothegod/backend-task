@@ -1,27 +1,30 @@
+const { z } = require("zod")
+const prisma = require("./lib/prisma.js")
 
 const createPerson = async (req,res) => {
     try {
             const name = req.body.name
-            const checkName = await prisma.person.findUnique({
-                where:{
-                    name: name
-                }
-            })
-            if(checkName){
-                res.json("name already exist, try another name")
-            } 
-            const user = await prisma.person.create({
-                data:{
-                    name: name
-                }
-            })
-            res.status(200).json({
-                msg: `person with name: ${user.name} has been created successfully`,
-                userDetails:{
-                    id: user.id,
-                    name: user.name
-                }
-            })
+
+            // const checkName = await prisma.person.findUnique({
+            //     where:{
+            //         name: name
+            //     }
+            // })
+            // if(checkName){
+            //     res.json("name already exist, try another name")
+            // } 
+            // const user = await prisma.person.create({
+            //     data:{
+            //         name: name
+            //     }
+            // })
+            // res.status(200).json({
+            //     msg: `person with name: ${user.name} has been created successfully`,
+            //     userDetails:{
+            //         id: user.id,
+            //         name: user.name
+            //     }
+            // })
       
     } catch (error) {
         res.status(404).json("Network error! try again.")
