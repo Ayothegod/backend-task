@@ -115,7 +115,7 @@ The API provides the following endpoints for CRUD operations on the "Person" res
 
 ```json
 {
-  "name": "Ayomide Adebisi"
+  "name": "Townhall"
 }
 ```
 
