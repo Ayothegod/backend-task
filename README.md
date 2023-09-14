@@ -214,21 +214,47 @@ Here are some sample API usage scenarios:
 
 1. **Create a Person**:
 
+```python
+   api_url = "http://localhost:3001/api/"
+   live_api_url = "https://modern-lapel-calf.cyclic.app/api"
+
+   {
+       "name": "TestName"
+   }
+```
 -  Sample post request
 > ![create person](./assets/post.png)
 
 2. **Read a Person**:
 
+```python
+   api_url = "http://localhost:3001/api/{user_id}"
+   live_api_url = "https://modern-lapel-calf.cyclic.app/api/{user_id}"
+
+```
 -  Sample get request
 > ![get person](./assets/get.png)
 
 3. **Update a Person**:
 
+```python
+   api_url = "http://localhost:3001/api/{user_id}"
+   live_api_url = "https://modern-lapel-calf.cyclic.app/api/{user_id}"
+
+   {
+       "name": "New TestName"
+   }
+```
 -  Sample update request
 > ![update person](./assets/patch.png)
 
 4. **Delete a Person**:
 
+```python
+   api_url = "http://localhost:3001/api/{user_id}"
+   live_api_url = "https://modern-lapel-calf.cyclic.app/api/{user_id}"
+
+```
 -  Sample delete request
 > ![delete person](./assets/delete.png)
 
