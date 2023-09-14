@@ -31,7 +31,7 @@ This project provides a simple REST API for managing person records, allowing yo
 - Unified Modeling Language (UML)
 > ![uml](uml.png)
 -  Entity-Relationship Diagram (ERD)
-> ![erd](erd.png)
+> ![erd](./assets/uml_one.png)
 
 ---
 
