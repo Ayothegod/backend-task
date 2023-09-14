@@ -4,8 +4,8 @@
   "description": "HNGx second backend task",
   "main": "index.js",
   "scripts": {
-    "start": "node start",
-    "dev": "nodemon start"
+    "start": "node index.js && npx prisma generate && npx prisma migrate deploy",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
