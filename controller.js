@@ -138,9 +138,8 @@ const deletePerson = async (req, res) => {
       },
     });
 
-    console.log(deleteUser);
     if (deleteUser) {
-      res.status(201).json({
+      return res.status(201).json({
         msg: `Person name has been deleted successfully`,
         personDetails: {
           id: deleteUser.id,
@@ -148,7 +147,7 @@ const deletePerson = async (req, res) => {
       });
     }
 
-    res.status(400).json("person does not exist");
+    res.status(200).json("person does not exist");
   } catch (error) {
     res.status(500).json("Person no longer exist.");
   }
