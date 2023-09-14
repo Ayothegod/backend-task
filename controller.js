@@ -74,7 +74,7 @@ const getPerson = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json("Network error! try again.");
+    res.status(404).json({msg:"Wrong credentials! check and try again."});
   }
 };
 
@@ -102,7 +102,7 @@ const updatePerson = async (req, res) => {
     });
 
     if (checkName) {
-      return res.status(200).json({
+      return res.status(400).json({
         msg: `Person with name: '${value}' already exist, try another name.`,
       });
     }
@@ -124,7 +124,7 @@ const updatePerson = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json("Network error, try again later.");
+    res.status(500).json({msg:"Network error, try again later."});
   }
 };
 
@@ -140,7 +140,7 @@ const deletePerson = async (req, res) => {
 
     if (deleteUser) {
       return res.status(201).json({
-        msg: `Person name has been deleted successfully`,
+        msg: `Person has been deleted successfully`,
         personDetails: {
           id: deleteUser.id,
         },
@@ -149,7 +149,7 @@ const deletePerson = async (req, res) => {
 
     res.status(200).json("person does not exist");
   } catch (error) {
-    res.status(500).json("Person no longer exist.");
+    res.status(404).json("Person no longer exist.");
   }
 };
 
