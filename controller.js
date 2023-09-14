@@ -46,20 +46,20 @@ const createPerson = async (req, res) => {
 // get person record function
 const getPerson = async (req, res) => {
   try {
-    if (req.body.name) {
-      const user = await prisma.person.findUnique({
-        where: {
-          name: req.body.name,
-        },
-      });
-      return res.status(201).json({
-        msg: `Person with name: '${user.name}' has been returned successfully`,
-        personDetails: {
-          id: user.id,
-          name: user.name,
-        },
-      });
-    }
+    // if (req.body.name) {
+    //   const user = await prisma.person.findUnique({
+    //     where: {
+    //       name: req.body.name,
+    //     },
+    //   });
+    //   return res.status(201).json({
+    //     msg: `Person with name: '${user.name}' has been returned successfully`,
+    //     personDetails: {
+    //       id: user.id,
+    //       name: user.name,
+    //     },
+    //   });
+    // }
 
     const user = await prisma.person.findUnique({
       where: {
